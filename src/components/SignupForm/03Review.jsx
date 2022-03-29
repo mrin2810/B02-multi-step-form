@@ -1,6 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { useSignupForm } from './SignupFormContext';
 
 export default function Review() {
-     return <form>I am a Review Form
-     <input type="submit" value="Submit All Info" /></form>
+     const { profile, social } = useSignupForm();
+
+     function handleSubmit(e) {
+          e.preventDefault();
+          alert('You are submitting the data!');
+     }
+
+     return <form onSubmit={handleSubmit}>
+          <p><strong>name:</strong> {profile.name} </p>
+          <p><strong>email:</strong> {profile.email} </p>
+          <p><strong>twitter:</strong> {social.twitter} </p>
+          <p><strong>facebook:</strong> {social.facebook} </p>
+     <input type="submit" value="Submit All Info"/></form>
 }
