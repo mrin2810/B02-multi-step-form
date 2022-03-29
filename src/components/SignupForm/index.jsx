@@ -5,9 +5,12 @@ import SocialForm from './02SocialForm';
 import Review from './03Review';
 import StepLinks from '../StepLinks';
 import { Routes, Route } from 'react-router-dom';
+import { SignupFormProvider } from './SignupFormContext';
 
 function SignupForm() {
-    return <div className='signup-form'>
+    return (
+    <SignupFormProvider>
+    <div className='signup-form'>
         {/* Show the steps and Links */}
         <StepLinks />
         {/* Show the respective forms */}
@@ -17,6 +20,8 @@ function SignupForm() {
             <Route path="/review" element={<Review />} />
         </Routes>
     </div>
+    </SignupFormProvider>
+    )
 }
 
 export default SignupForm;
