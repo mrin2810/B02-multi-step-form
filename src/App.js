@@ -5,6 +5,8 @@ import SignupForm from './components/SignupForm';
 
 export default function App() {
   return <Router>
-    <SignupForm />
+    <div className='app'>
+      <SignupForm />
+    </div>
   </Router>
 }
