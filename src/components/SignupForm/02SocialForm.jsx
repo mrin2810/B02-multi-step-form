@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useSignupForm } from './SignupFormContext';
+import { motion } from 'framer-motion';
 
 export default function SocialForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,6 +15,13 @@ export default function SocialForm() {
         navigate("/review");
     }
     return (
+        <motion.div 
+            style={{ position: 'absolute' }}
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            exit={{ x: -200, opacity: 0 }}
+            transition={{ duration: .2 }}
+        >
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <h2>How can we find you on social?</h2>
             <input 
@@ -39,5 +47,6 @@ export default function SocialForm() {
 
             <input type="submit" value="Next" />
         </form>
+        </motion.div>
     )
 }
