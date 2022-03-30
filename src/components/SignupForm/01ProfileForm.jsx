@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useSignupForm } from './SignupFormContext';
-import { motion } from 'framer-motion';
+import AnimatedDiv from './AnimatedDiv';
 
 export default function ProfileForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -16,13 +16,7 @@ export default function ProfileForm() {
     }
 
     return (
-        <motion.div 
-            style={{ position: 'absolute' }}
-            initial={{ x: 200 }}
-            animate={{ x: 0 }}
-            exit={{ x: -200, opacity: 0 }}
-            transition={{ duration: .2 }}
-        >
+        <AnimatedDiv>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <h2>Tell us about yourself</h2>
                 <input 
@@ -49,6 +43,6 @@ export default function ProfileForm() {
 
                 <input type="submit" value="Next" />
             </form>
-        </motion.div>
+        </AnimatedDiv>
     )
 }

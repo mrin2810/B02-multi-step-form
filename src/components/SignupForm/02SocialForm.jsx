@@ -1,8 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import AnimatedDiv from './AnimatedDiv';
 import { useSignupForm } from './SignupFormContext';
-import { motion } from 'framer-motion';
 
 export default function SocialForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,38 +15,32 @@ export default function SocialForm() {
         navigate("/review");
     }
     return (
-        <motion.div 
-            style={{ position: 'absolute' }}
-            initial={{ x: 200 }}
-            animate={{ x: 0 }}
-            exit={{ x: -200, opacity: 0 }}
-            transition={{ duration: .2 }}
-        >
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <h2>How can we find you on social?</h2>
-            <input 
-                type="text" 
-                name="twitter" 
-                placeholder="What's your Twitter?" 
-                {...register("twitter", {
-                    required: true
-                })} 
-                defaultValue={social.twitter}
-            />
-            <p>{errors.twitter && 'Twitter is Required'}</p>
-            <input 
-                type="text" 
-                name="facebook" 
-                placeholder="What's your Facebook?" 
-                {...register("facebook", {
-                    required: true
-                })} 
-                defaultValue={social.facebook}
-            />
-            <p>{errors.facebook && 'Facebook is Required'}</p>
+        <AnimatedDiv>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                <h2>How can we find you on social?</h2>
+                <input 
+                    type="text" 
+                    name="twitter" 
+                    placeholder="What's your Twitter?" 
+                    {...register("twitter", {
+                        required: true
+                    })} 
+                    defaultValue={social.twitter}
+                />
+                <p>{errors.twitter && 'Twitter is Required'}</p>
+                <input 
+                    type="text" 
+                    name="facebook" 
+                    placeholder="What's your Facebook?" 
+                    {...register("facebook", {
+                        required: true
+                    })} 
+                    defaultValue={social.facebook}
+                />
+                <p>{errors.facebook && 'Facebook is Required'}</p>
 
-            <input type="submit" value="Next" />
-        </form>
-        </motion.div>
+                <input type="submit" value="Next" />
+            </form>
+        </AnimatedDiv>
     )
 }
